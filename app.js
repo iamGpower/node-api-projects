@@ -8,10 +8,11 @@ const { MONGO_URI } = process.env;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-	// console.log(req);
-	res.send('Welcome to Task Manager');
-});
+app.use(express.static('./public'))
+
+// app.get('/', (req, res) => {
+// 	res.send('Welcome to Task Manager');
+// });
 
 app.use('/api/v1/tasks', tasks);
 
