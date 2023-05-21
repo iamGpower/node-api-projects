@@ -2,20 +2,22 @@ const express = require('express');
 const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
+const notFoundRoute = require('./middleware/notfound');
+const errorHandler = require('./middleware/errorHandler');
 require('dotenv').config();
-const PORT = 3000;
 const { MONGO_URI } = process.env;
+const { PORT } = process.env;
 
+// middlewares
 app.use(express.json());
+app.use(express.static('./public'));
 
-app.use(express.static('./public'))
-
-// app.get('/', (req, res) => {
-// 	res.send('Welcome to Task Manager');
-// });
-
+// routes
 app.use('/api/v1/tasks', tasks);
+app.use(notFoundRoute);
+app.use(errorHandler);
 
+// Init DB connection before spinning server
 const init = async () => {
 	try {
 		await connectDB(MONGO_URI);
