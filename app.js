@@ -6,7 +6,7 @@ const notFoundRoute = require('./middleware/notfound');
 const errorHandler = require('./middleware/errorHandler');
 require('dotenv').config();
 const { MONGO_URI } = process.env;
-const { PORT } = process.env;
+const PORT = process.env.PORT || 3030;
 
 // middlewares
 app.use(express.json());
