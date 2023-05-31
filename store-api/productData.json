@@ -1,0 +1,14 @@
+[
+	{
+		"name": "accent chair",
+		"price": 25,
+		"company": "bedmate",
+		"rating": 5
+	},
+	{
+		"name": "albany table",
+		"price": 109,
+		"company": "viva",
+		"rating": 4
+	}
+]
