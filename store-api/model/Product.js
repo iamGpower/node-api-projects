@@ -9,7 +9,7 @@ const productSchema = new Schema({
 		type: Number,
 		required: [true, 'Please provide a product price'],
 	},
-	isFeatured: {
+	featured: {
 		type: Boolean,
 		default: false,
 	},
@@ -17,16 +17,16 @@ const productSchema = new Schema({
 		type: Number,
 		default: 3.0,
 	},
-	createdAt: {
-		type: Date,
-		default: Date.now(),
-	},
 	company: {
 		type: String,
 		enum: {
-			value: ['ikea', 'viva', 'bedmate'],
+			values: ['ikea', 'viva', 'bedmate'],
 			message: '{Value} is not found',
 		},
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now(),
 	},
 });
 

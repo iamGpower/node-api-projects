@@ -1,0 +1,6 @@
+task-mgr-api/.env
+task-mgr-api/task.json
+task-mgr-api/node_modules
+store-api/populate.js
+store-api/node_modules
+store-api/populate.js

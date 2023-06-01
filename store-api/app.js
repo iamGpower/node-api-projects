@@ -4,7 +4,7 @@ require('express-async-errors');
 const express = require('express');
 const app = express();
 const connectDB = require('./db/connectDb');
-const productRouter = require('./routes/products');
+const productRouter = require('./routes/product');
 
 const PORT = process.env.PORT || 5000;
 
