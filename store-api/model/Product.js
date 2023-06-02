@@ -20,7 +20,7 @@ const productSchema = new Schema({
 	company: {
 		type: String,
 		enum: {
-			values: ['ikea', 'viva', 'bedmate'],
+			values: ['ikea', 'liddy', 'caressa', 'marcos'],
 			message: '{Value} is not found',
 		},
 	},
