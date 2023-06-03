@@ -2,7 +2,7 @@ const Product = require('../model/Product');
 
 const getAllProducts = async (req, res) => {
 	// console.log(req.query);
-	const { featured, company, name, sort, fields } = req.query;
+	const { featured, company, name, sort, fields, numericFilters } = req.query;
 	const queryObj = {};
 
 	if (featured) queryObj.featured = featured === 'true' ? true : false;
