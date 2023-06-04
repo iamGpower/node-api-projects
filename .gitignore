@@ -5,3 +5,4 @@ store-api/.env
 store-api/node_modules
 store-api/productData.json
 store-api/populate.js
+SPA-api/node_modules
