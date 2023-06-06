@@ -18,3 +18,5 @@
 ## SPA API
 
 - A Single Page App API with Vanilla JS front end
+  - with JWT implementation for secure routes
+  - custom error handling for unique exceptions
