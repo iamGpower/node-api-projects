@@ -7,3 +7,5 @@ store-api/productData.json
 store-api/populate.js
 SPA-api/node_modules
 SPA-api/.env
+jobs-api/.env
+jobs-api/node_modules
