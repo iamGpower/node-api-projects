@@ -2,15 +2,14 @@
 
 In order to spin up the project, create the below variable in a .env file with your own values.
 
-  - MONGO_URI
-  - JWT_SECRET
+- MONGO_URI
+- JWT_SECRET
 
 There after, you run the below command
 
 ```bash
 npm install && npm start
 ```
-
 
 ## Task Manager API with vanilla JS front-end
 
@@ -36,3 +35,5 @@ npm install && npm start
   - custom error handling for unique exceptions
 
 ## Job Board API
+
+- Full CRUD API for managing Jobs tracking
