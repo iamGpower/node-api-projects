@@ -6,6 +6,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 const authRouter = require('./routes/auth');
 const jobsRouter = require('./routes/jobs');
 const connectDB = require('./db/connect');
+const authMiddleware = require('./middleware/auth');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -14,7 +15,7 @@ app.use(express.json());
 
 // routes
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/jobs', jobsRouter);
+app.use('/api/v1/jobs', authMiddleware, jobsRouter);
 
 // error handler
 app.use(notFoundMiddleware);

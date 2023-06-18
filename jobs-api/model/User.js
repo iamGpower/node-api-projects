@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Schema, model } = require('mongoose');
-const { hash, genSalt } = require('bcryptjs');
+const { hash, genSalt, compare } = require('bcryptjs');
 const { sign } = require('jsonwebtoken');
 
 const UserSchema = new Schema({
@@ -31,7 +31,12 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre('save', async function (next) {
+	// only has the password if it has been modified (or is new)
+	// if(!user.isModified('password'))return next()
+
+	// generate a salt
 	const salt = await genSalt(10);
+
 	this.password = await hash(this.password, salt);
 	next();
 });
@@ -42,5 +47,9 @@ UserSchema.methods.createToken = function () {
 		process.env.JWT_SECRET,
 		{ expiresIn: process.env.JWT_EXPIRY },
 	);
+};
+
+UserSchema.methods.confirmPassword = async function (clientPassword) {
+	return await compare(clientPassword, this.password);
 };
 module.exports = model('User', UserSchema);

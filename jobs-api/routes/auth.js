@@ -5,4 +5,4 @@ const { login, register } = require('../controller/auth');
 router.route('/login').post(login);
 router.route('/register').post(register);
 
-module.exports = router 
+module.exports = router;
