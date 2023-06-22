@@ -1,16 +1,30 @@
-const CustomAPIError = require('../errors/custom-error');
+// const CustomAPIError = require('../errors/custom-error');
 const { StatusCodes } = require('http-status-codes');
 
 const errorHandlerMiddleware = (err, req, res, next) => {
-	if (err instanceof CustomAPIError) {
-		return res
-			.status(err.statusCode)
-			.json({ success: false, msg: err.message });
+	const customError = {
+		// set default
+		statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
+		msg: err.message || 'Something went wrong',
+	};
+	// if (err instanceof CustomAPIError) {
+	// 	return res
+	// 		.status(err.statusCode)
+	// 		.json({ success: false, msg: err.message });
+	// }
+	console.log(err);
+
+	if (err.code && err.code === 11000) {
+		customError.msg = `Duplicate value entered for ${err.keyValue.email} field, please choose another value`;
+		customError.statusCode = StatusCodes.BAD_REQUEST;
 	}
-	console.log(err.message);
+	// return res
+	// 	.status(StatusCodes.INTERNAL_SERVER_ERROR)
+	// 	.json({ success: false, msg: err.message });
+	// console.log(err.message);
 	return res
-		.status(StatusCodes.INTERNAL_SERVER_ERROR)
-		.json({ success: false, msg: err.message });
+		.status(customError.statusCode)
+		.json({ success: false, msg: customError.msg });
 };
 
 module.exports = errorHandlerMiddleware;

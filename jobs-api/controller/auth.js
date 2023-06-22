@@ -5,11 +5,11 @@ const { UnAuthenticatedError, BadRequestError } = require('../errors');
 const register = async (req, res) => {
 	const { name, email, password } = req.body;
 
-	const userExists = await User.findOne({ email });
-	if (userExists)
-		return res
-			.status(StatusCodes.FORBIDDEN)
-			.json({ msg: `user already exist` });
+	// const userExists = await User.findOne({ email });
+	// if (userExists)
+	// 	return res
+	// 		.status(StatusCodes.FORBIDDEN)
+	// 		.json({ msg: `user already exist` });
 
 	const user = await User.create({ ...req.body });
 	const token = user.createToken();
