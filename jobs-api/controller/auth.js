@@ -5,6 +5,8 @@ const { UnAuthenticatedError, BadRequestError } = require('../errors');
 const register = async (req, res) => {
 	const { name, email, password } = req.body;
 
+	// Currently handled in mongoose 
+
 	// const userExists = await User.findOne({ email });
 	// if (userExists)
 	// 	return res
