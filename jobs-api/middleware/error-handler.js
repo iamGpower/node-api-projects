@@ -21,14 +21,21 @@ const errorHandlerMiddleware = (err, req, res, next) => {
 		customError.statusCode = StatusCodes.BAD_REQUEST;
 	}
 
+	if (err.name === 'CastError') {
+		customError.msg = `No job found with id ${err.value} `;
+		customError.statusCode = StatusCodes.NOT_FOUND;
+	}
+
 	if (err.code && err.code === 11000) {
-		customError.msg = `Duplicate value entered for ${err.keyValue.email} field, please choose another value`;
+		customError.msg = `Duplicate value entered for ${Object.keys(
+			err.keyValue,
+		)} field, please choose another value`; 
 		customError.statusCode = StatusCodes.BAD_REQUEST;
 	}
 	// return res
 	// 	.status(StatusCodes.INTERNAL_SERVER_ERROR)
 	// 	.json({ success: false, msg: err });
-	// console.log(err.message);
+
 	return res
 		.status(customError.statusCode)
 		.json({ success: false, msg: customError.msg });
