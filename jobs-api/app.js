@@ -32,6 +32,9 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
+app.get('/', (req, res) => {
+	res.send(`<h2>🎉 Welcome to Jobs API 😊 </h2>`);
+});
 // routes
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', authMiddleware, jobsRouter);
@@ -43,7 +46,7 @@ app.use(errorHandlerMiddleware);
 const start = async () => {
 	try {
 		await connectDB(process.env.MONGO_URI);
-		console.log(`DB connected successfully`);
+		console.log(`JobsAPI DB connected successfully`);
 		app.listen(PORT, () => {
 			console.log(`Server currently listening on port ${PORT}`);
 		});
