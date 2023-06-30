@@ -4,7 +4,7 @@ require('express-async-errors');
 // security packages
 const helmet = require('helmet');
 const cors = require('cors');
-const ratelimiter = require('express-rate-limit');
+const rateLimit = require('express-rate-limit');
 
 const express = require('express');
 const notFoundMiddleware = require('./middleware/not-found');
