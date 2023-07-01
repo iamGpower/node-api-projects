@@ -36,4 +36,7 @@ npm install && npm start
 
 ## Job Board API
 
+- Reg/Login routes for authentication
+- API calls rate limiting on Jobs routes 
 - Full CRUD API for managing Jobs tracking
+- Custom error handling system
